@@ -289,7 +289,7 @@ def redirect_stdout (verbose : bool):
                                       # CLOEXEC may be different
 
 
-def view_weights (weights : np.ndarray, dims : tuple) -> None:
+def view_weights (weights : np.ndarray, dims : tuple, cmap : str = 'bwr') -> None:
   '''
   Plot the weight matrix as full image
 
@@ -300,6 +300,9 @@ def view_weights (weights : np.ndarray, dims : tuple) -> None:
 
     dims : tuple
       Dimension of each single image/weight connections
+
+    cmap : str (default = 'bwr')
+      Colormap to use
 
   Returns
   -------
@@ -330,7 +333,7 @@ def view_weights (weights : np.ndarray, dims : tuple) -> None:
   # plot the results
   fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10, 10))
   ax.axis('off')
-  im = ax.imshow(image, cmap='bwr', vmin=-nc, vmax=nc)
+  im = ax.imshow(image, cmap=cmap, vmin=-nc, vmax=nc)
   fig.colorbar(im, ticks=[np.min(selected_weights), 0, np.max(selected_weights)])
 
   plt.show()
