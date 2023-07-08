@@ -113,10 +113,16 @@ class BCM (BasePlasticity):
       convergence_atol : float = 0.01,
       decay : float = 0.,
       memory_factor: float = 0.5,
-      random_state : int = None, verbose : bool = True):
+      random_state : int = None, verbose : bool = True,
+      weights_interaction = None):
 
-    self._interaction_matrix = self._weights_interaction(interaction_strength, outputs)
     self.interaction_strength = interaction_strength
+
+    if weights_interaction is None:
+      self._interaction_matrix = self._weights_interaction(self.interaction_strength, outputs)
+    else:
+      self._interaction_matrix = weights_interaction(self.interaction_strength, outputs)
+    
     self.memory_factor = memory_factor
 
     super (BCM, self).__init__(outputs=outputs, num_epochs=num_epochs,
