@@ -52,19 +52,19 @@ In the paper by [D. Krotov and J. J. Hopfield](https://arxiv.org/abs/1806.10181)
 Starting from these concepts, they were able to design an algorithm (based on an extension of the *Oja rule*) capable of learning early feature detectors in a completely unsupervised way and then use them to train higher-layer weights in a usual supervised neural network.
 In particular, the Hopfield model has the structure of a 2-layers neural network which can be described by the following equations:
 
-<p align="center">
-  <img src="https://render.githubusercontent.com/render/math?math=h_j=f(\sum_iw_{ij}v_i)">
-</p>
+$$
+h_j=f\left(\sum_iw_{ij}v_i\right)
+$$
 
-<p align="center">
-  <img src="https://render.githubusercontent.com/render/math?math=c_k=tanh(\sum_js_{jk}h_j)">
-</p>
+$$
+c_k=tanh\left(\sum_js_{jk}h_j\right)
+$$
 
 where
 
-<p align="center">
-  <img src="https://render.githubusercontent.com/render/math?math=f(x)=\left\{\begin{matrix}x^n,x\geq0\\0,x<0\end{matrix}\right.">
-</p>
+$$
+f(x)=\begin{cases}x^n,x\geq0\\0,x<0\end{cases}
+$$
 
 is the activation function of the unsupervised layer (ReLu for n=1), v<sub>i</sub>, h<sub>j</sub>, c<sub>k</sub> are respectively the input, hidden and output neurons and w<sub>ij</sub>, s<sub>jk</sub> are the receptive fields of the hidden layer (learned by the local unsupervised algorithm) and the weights learned by conventional supervised technique.
 
