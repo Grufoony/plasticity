@@ -62,9 +62,9 @@ $$
 
 where
 
-$$
+```math
 f(x)=\begin{cases}x^n,x\geq0\\0,x<0\end{cases}
-$$
+```
 
 is the activation function of the unsupervised layer (ReLu for n=1), v<sub>i</sub>, h<sub>j</sub>, c<sub>k</sub> are respectively the input, hidden and output neurons and w<sub>ij</sub>, s<sub>jk</sub> are the receptive fields of the hidden layer (learned by the local unsupervised algorithm) and the weights learned by conventional supervised technique.
 
