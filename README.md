@@ -52,21 +52,21 @@ In the paper by [D. Krotov and J. J. Hopfield](https://arxiv.org/abs/1806.10181)
 Starting from these concepts, they were able to design an algorithm (based on an extension of the *Oja rule*) capable of learning early feature detectors in a completely unsupervised way and then use them to train higher-layer weights in a usual supervised neural network.
 In particular, the Hopfield model has the structure of a 2-layers neural network which can be described by the following equations:
 
-<p align="center">
-  <img src="https://render.githubusercontent.com/render/math?math=h_j=f(\sum_iw_{ij}v_i)">
-</p>
+```math
+h_j=f\left(\sum_iw_{ij}v_i\right)
+```
 
-<p align="center">
-  <img src="https://render.githubusercontent.com/render/math?math=c_k=tanh(\sum_js_{jk}h_j)">
-</p>
+```math
+c_k=\tanh\left(\sum_js_{jk}h_j\right)
+```
 
 where
 
-<p align="center">
-  <img src="https://render.githubusercontent.com/render/math?math=f(x)=\left\{\begin{matrix}x^n,x\geq0\\0,x<0\end{matrix}\right.">
-</p>
+```math
+f(x)=\begin{cases}x^n,x\geq0\\0,x<0\end{cases}
+```
 
-is the activation function of the unsupervised layer (ReLu for n=1), v<sub>i</sub>, h<sub>j</sub>, c<sub>k</sub> are respectively the input, hidden and output neurons and w<sub>ij</sub>, s<sub>jk</sub> are the receptive fields of the hidden layer (learned by the local unsupervised algorithm) and the weights learned by conventional supervised technique.
+is the activation function of the unsupervised layer (ReLu for $n=1$), $v_i$, $h_j$, $c_k$ are respectively the input, hidden and output neurons and $w_{ij}$, $s_{jk}$ are the receptive fields of the hidden layer (learned by the local unsupervised algorithm) and the weights learned by conventional supervised technique.
 
 ## Theory
 
@@ -78,21 +78,21 @@ The proposed implementation is discussed in the work of [Squadrani & Curti et al
 In general terms, BCM model proposes a sliding threshold for long-term potentiation (LTP) or long-term depression (LTD) induction, and states that synaptic plasticity is stabilized by a dynamic adaptation of the time-averaged post-synaptic activity.
 The BCM learning rule is described by the following equations:
 
-<p align="center">
-  <img src="https://render.githubusercontent.com/render/math?math=\frac{dw_i}{dt}=\frac{y(y-\theta)x_i}{\theta}">
-</p>
+```math
+\frac{dw_i}{dt}=\frac{y(y-\theta)x_i}{\theta}
+```
 
-<p align="center">
-  <img src="https://render.githubusercontent.com/render/math?math=\theta=\mathbb{E}[y^2]">
-</p>
+```math
+\theta=\mathbb{E}[y^2]
+```
 
-where <img src="https://render.githubusercontent.com/render/math?math=\mathbb{E}[\cdot]"> is the time-average operator and, taking the input `x`, the output `y` is computed as:
+where $\mathbb{E}[\cdot]$ is the time-average operator and, taking the input `x`, the output `y` is computed as:
 
-<p align="center">
-  <img src="https://render.githubusercontent.com/render/math?math=y=\sigma\left(\sum_iw_ix_i\right)">
-</p>
+```math
+y=\sigma\left(\sum_iw_ix_i\right)
+```
 
-In the classical model the activation function <img src="https://render.githubusercontent.com/render/math?math=\sigma"> is a given by a sigmoid.
+In the classical model the activation function $\sigma$ is a given by a sigmoid.
 
 See [here](https://github.com/Nico-Curti/plasticity/blob/main/docs/source/theory.rst) for further details about the models.
 
