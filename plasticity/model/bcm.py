@@ -119,9 +119,9 @@ class BCM (BasePlasticity):
     self.interaction_strength = interaction_strength
 
     if weights_interaction is None:
-      self._interaction_matrix = self._weights_interaction(self.interaction_strength, outputs)
+      self._interaction_matrix = self._weights_interaction(strength=self.interaction_strength, outputs=outputs)
     else:
-      self._interaction_matrix = weights_interaction(self.interaction_strength, outputs)
+      self._interaction_matrix = weights_interaction(strength=self.interaction_strength, outputs=outputs)
     
     self.memory_factor = memory_factor
 
