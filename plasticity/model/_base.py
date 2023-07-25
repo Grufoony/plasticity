@@ -246,7 +246,7 @@ class BasePlasticity (BaseEstimator, TransformerMixin):
     indices = np.arange(0, num_samples).astype('int64')
     num_batches = num_samples // self.batch_size
 
-    for epoch in trange(self.num_epochs, disable=(self.verbose)):
+    for epoch in trange(self.num_epochs, disable=(not self.verbose)):
 
       if self.verbose:
         print('Epoch {:d}/{:d}'.format(epoch + 1, self.num_epochs))
